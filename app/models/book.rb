@@ -57,4 +57,8 @@ class Book < ApplicationRecord
     "#{book_type} is for age over 18"
   end
 
+  def hours_ago
+    hours_diff = ((Time.now - created_at) / 1.hour).to_i
+    "#{hours_diff} hours ago"
+  end
 end
