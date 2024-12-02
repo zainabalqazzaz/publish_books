@@ -1,0 +1,16 @@
+<br><br><%= link_to image_tag("images.png", alt:"back",width:30,height:30),users_path%><br><br>
+first_name: <%= @user.first_name %><br>
+last_name: <%= @user.last_name %><br>
+email : <%= @user.email%><br>
+<div style="margin-bottom: 50px;">
+  <%= button_to 'Create a New Book', new_book_path, method: :get, class: 'btn btn-primary' %>
+</div>
+<%=link_to ('user email'),users_path %><br>
+gender: <%= @user.gender%><br>
+age: <%= @user.age%><br>
+<%= link_to ('linkedin_profil'), "https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3850390?start=1#content", target: '_blank' %><br>
+ssn : <%= @user.ssn%><br>
+full_name: <%= @user.full_name %><br>
+
+
+

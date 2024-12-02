@@ -1,0 +1,47 @@
+<h1>Update Book</h1>
+
+<%= form_with model: @book, local: true do |form| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :descrition %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :author_country %>
+    <%= form.text_field :author_country %>
+  </div>
+
+  <div>
+    <%= form.label :pages %>
+    <%= form.text_field :pages %>
+  </div>
+
+
+  <div>
+    <%= form.label :book_type %>
+    <%= form.text_field :book_type %>
+  </div>
+
+  <div>
+    <%= form.submit "Updtae a Book" %>
+  </div>
+<% end %>
+
+
+<%= button_to 'cancel' , books_path, method: :get%>

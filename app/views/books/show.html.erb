@@ -1,0 +1,14 @@
+author: <%=@book.user.full_name || 'Unknown Author' %><br>
+<%=link_to ('user email'),users_path %><br>
+<%= link_to ('linkedin_profil'), "https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3850390?start=1#content", target: '_blank' %><br>
+
+title: <%=@book.title %><br>
+description: <%=@book.description %><br>
+book_type : <%=@book.book_type%><br>
+author_country: <%=@book.author_country%><br><br>
+<br><br><%= link_to image_tag("images.png", alt:"back",width:50,height:30),books_path%><br><br>
+
+<% if user_signed_in? %>
+  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+<% end %>
+

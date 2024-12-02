@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  Welcome: <%= current_user.first_name %>
+<% end %>
+
+<div style="margin-bottom: 50px;">
+  <%= button_to 'Create a New Book', new_book_path, method: :get, class: 'btn btn-primary' %>
+</div>
+
+<div class="books-container">
+  <% @books.each do |book| %>
+    <div class="book-card">
+      <p><strong>Book Name:</strong> <%= book.title %></p>
+      <div class="book-actions">
+      <%= link_to 'View Details', book_path(book), class: 'btn btn-info' %>
+      <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-warning' %>
+      <%= link_to 'Delete', book_path(book), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </div><br>
+  </div><br><br>
+<% end %>
+</div><br>
+
+<% if user_signed_in? %>
+  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+<% end %>

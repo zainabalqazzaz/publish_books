@@ -1,0 +1,9 @@
+<%= button_to 'go to about me' , about_me_path , method: :get%>
+<%= button_to 'go to about' , about_path , method: :get%>
+<%= button_to 'go to my_car' , my_car_path , method: :get%>
+<%= button_to 'go to car modle' , my_car_modle_path , method: :get%>
+<%= button_to 'go to about me' , about_me_path , method: :get%>
+
+<% if user_signed_in? %>
+  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+<% end %>
