@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @a="this is my first application"
+   @books=Book.where("created_at >= ?", 24.hours.ago)
   end
 
   def about 
