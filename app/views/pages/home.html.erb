@@ -1,13 +1,36 @@
-<%@books.each do |book|%>
- Book Name:<%=book.title%><br>
- Author Name:<%=book.user.full_name%><br>
- Books published:<%=book.user.books.count%><br>
- Published_at:<%=book.hours_ago%><br>
- *****************************************<br><br>
-<%end%>
+<body class="bg-light">
+  <div class="container py-5">
+    <!-- Page Title -->
+    <h1 class="text-center mb-4">Books List</h1>
 
-<% if user_signed_in?%>
-  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
-<%else%>
-  <%= button_to 'Sign in', new_user_session_path, class: 'btn btn-primary'  %>
-<% end %>
+    <!-- Books Display -->
+    <div class="row">
+      <% @recent_books.each do |book| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title text-primary"><%= book.title %></h5>
+              <p class="card-text"><strong>Author Name:</strong> <%= book.user.full_name %></p>
+              <p class="card-text"><strong>Books Published:</strong> <%= book.user.books.count %></p>
+              <p class="card-text"><strong>Published At:</strong> <%= book.time_ago %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <div class="d-flex justify-content-center">
+    <%= paginate @recent_books %>
+  </div>
+
+    <!-- Action Buttons -->
+    <div class="text-center mt-4">
+      <% if user_signed_in? %>
+        <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+      <% else %>
+        <%= button_to 'Sign In', new_user_session_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</body>
+

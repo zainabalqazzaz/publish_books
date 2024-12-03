@@ -8,7 +8,7 @@
 
 <div class="books-container">
   <% @books.each do |book| %>
-    <div class="book-card">
+    <div class="card-body">
       <p><strong>Book Name:</strong> <%= book.title %></p>
       <div class="book-actions">
       <%= link_to 'View Details', book_path(book), class: 'btn btn-info' %>
