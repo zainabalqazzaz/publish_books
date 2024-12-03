@@ -61,4 +61,14 @@ class Book < ApplicationRecord
     hours_diff = ((Time.now - created_at) / 1.hour).to_i
     "#{hours_diff} hours ago"
   end
+ 
+  def time_ago
+    total_seconds = (Time.now - created_at).to_i
+    hours = total_seconds / 3600
+    minutes = (total_seconds % 3600) / 60
+    seconds = total_seconds % 60
+
+    "#{hours}h #{minutes}m #{seconds}s ago"
+  end
+
 end
