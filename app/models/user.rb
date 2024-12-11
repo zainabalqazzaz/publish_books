@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :books
+  has_many :favorites
+  has_many :favorite_books, through: :favorites, source: :book
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
   
@@ -24,7 +26,4 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-  
-  
-
 end

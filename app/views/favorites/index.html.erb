@@ -1,0 +1,29 @@
+<body class="bg-light">
+  <div class="container py-5">
+    <!-- Page Title -->
+    <h1 class="text-center mb-4">My Favorite Books</h1>
+
+    <!-- Books Display -->
+    <div class="row">
+      <% @favorites.each do |book| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title text-primary"><%= book.title %></h5>
+
+              <p class="card-text"><strong>Author Name:</strong> <%= book.user.full_name %></p>
+              <p class="card-text"><strong>Books Published:</strong> <%= book.user.books.count %></p>
+              <p class="card-text"><strong>Published At:</strong> <%= book.time_ago %></p>
+             
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="d-flex justify-content-center">
+        <%= paginate @favorites %>
+      </div>
+
+    </div>
+  </div>
+</body>

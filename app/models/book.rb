@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
+  has_many :favorites, dependent: :destroy # returns all the favorites records for the Book. For example if we Book.last.favorites, this will return all the favorites records.
+  has_many :favorited_by_users, through: :favorites, source: :user
   validates :title, presence: true
   validates :description, presence: true
   validates :book_type, presence: true
@@ -21,14 +23,14 @@ class Book < ApplicationRecord
   def description_length
     if description.length > 200
       errors.add(:description, "description should not be less than 200 char")
-    end 
+    end
   end
 
   def author_country_check
     allwoed_country_list=["uk","iraq","us"]
     if allwoed_country_list.exclude?(author_country)
         errors.add(:author_country,'aouther country not ecpected')
-    end 
+    end
   end
 
   def book_type_check
@@ -40,14 +42,14 @@ class Book < ApplicationRecord
 
   def book_pages
     if pages < 100 || pages > 1000
-      errors.add(:pages,'pages should be between 100 and 1000') 
+      errors.add(:pages,'pages should be between 100 and 1000')
     end
   end
 
   def us_author?
     author_country == "us"
   end
-  
+
 
   def book_author_type
     "#{author} #{book_type}"
@@ -61,7 +63,7 @@ class Book < ApplicationRecord
     hours_diff = ((Time.now - created_at) / 1.hour).to_i
     "#{hours_diff} hours ago"
   end
- 
+
   def time_ago
     total_seconds = (Time.now - created_at).to_i
     hours = total_seconds / 3600

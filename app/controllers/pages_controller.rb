@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @all_books=Book.page(params[:page]).per(9)
-    @recent_books=Book.where("created_at >= ?", 48.hours.ago).page(params[:page]).per(9)
+    @recent_books=Book.where("created_at >= ?", 100.hours.ago).page(params[:page]).per(9)
   end
 
   def about 
