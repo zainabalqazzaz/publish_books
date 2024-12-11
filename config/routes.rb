@@ -18,5 +18,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :books
+  resources :favorites
+
+  post "/add_book_to_favorites", to: "favorites#create"
+  delete "/remove_book_from_favorites", to: "favorites#destroy"
 
 end

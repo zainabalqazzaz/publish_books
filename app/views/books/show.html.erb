@@ -1,14 +1,22 @@
-author: <%=@book.user.full_name || 'Unknown Author' %><br>
-<%=link_to ('user email'),users_path %><br>
-<%= link_to ('linkedin_profil'), "https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3850390?start=1#content", target: '_blank' %><br>
+<div class="card shadow">
+    <div class="card-header bg-primary text-white text-center">
+      <h3>Book Details</h3>
+      <p><strong>Author Name:</strong> <%= @book.user.full_name || 'Unknown Author' %></p>
+    </div>
+</div>
 
-title: <%=@book.title %><br>
-description: <%=@book.description %><br>
-book_type : <%=@book.book_type%><br>
-author_country: <%=@book.author_country%><br><br>
+<%# <div class="books-container"> %>
+<%=link_to ('user email'),users_path %><br>
+<%= link_to ('linkedin_profil'), "https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3850390?start=1#content", target: '_blank' %>
+<i class="fa-brands fa-linkedin"></i>
+<div class="card-body">
+          <p><strong>Book Title:</strong> Reading</p>
+          <p><strong>Description:</strong> dvhjdv</p>
+          <p><strong>Book Type:</strong> Drama</p>
+          <p><strong>Author Country:</strong> US</p>
+        </div>
 <br><br><%= link_to image_tag("images.png", alt:"back",width:50,height:30),books_path%><br><br>
 
 <% if user_signed_in? %>
   <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
 <% end %>
-

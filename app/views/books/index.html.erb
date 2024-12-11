@@ -4,6 +4,7 @@
 
 <div style="margin-bottom: 50px;">
   <%= button_to 'Create a New Book', new_book_path, method: :get, class: 'btn btn-primary' %>
+ 
 </div>
 
 <div class="books-container">
@@ -17,8 +18,10 @@
     </div><br>
   </div><br><br>
 <% end %>
-</div><br>
 
+</div><br>
 <% if user_signed_in? %>
+ <%= button_to 'My Favorites Books', favorites_path, method: :get, class: 'btn btn-primary' %>
   <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
 <% end %>
+</div>
